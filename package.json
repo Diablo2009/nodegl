@@ -3,6 +3,7 @@
 	"description": "OpenGl 1.1 Bindings for NodeJS",
 	"version": "1.2.0",
 	"main": "index.js",
+	"types": "index.d.ts",
 	"license": "MIT",
 	"gypfile": true,
 	"scripts": {
