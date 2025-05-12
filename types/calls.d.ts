@@ -1,15 +1,110 @@
+// Documentation Source: https://docs.gl
+
 interface CallsBase<GLenum, GLboolean, GLbitfield, GLvoid, GLbyte, GLshort, GLint, GLubyte, GLushort, GLuint, GLsizei, GLfloat, GLclampf, GLdouble, GLclampd> {}
 
 export interface CallsMisc<GLenum, GLboolean, GLbitfield, GLvoid, GLbyte, GLshort, GLint, GLubyte, GLushort, GLuint, GLsizei, GLfloat, GLclampf, GLdouble, GLclampd>
 {
+    /**
+     * `glClearIndex` specifies the index used by glClear to clear the color index buffers. c is not clamped. Rather, c is converted to a fixed-point value with unspecified precision to the right of the binary point. The integer part of this value is then masked with 2m−1, where m is the number of bits in a color index stored in the frame buffer.
+     */
     glClearIndex ( c : GLfloat ) : void;
+    /** 
+     * `glClearColor` specifies the red, green, blue, and alpha values used by glClear to clear the color buffers. Values specified by glClearColor are clamped to the range [0,1]. 
+    */
     glClearColor ( red : GLclampf, green : GLclampf, blue : GLclampf, alpha : GLclampf ) : void;
+    /**
+     *  `glClear` sets the bitplane area of the window to values previously selected by `glClearColor`, `glClearIndex`, `glClearDepth`, `glClearStencil`, and `glClearAccum`. Multiple color buffers can be cleared simultaneously by selecting more than one buffer at a time using glDrawBuffer.
+     *
+     *  The pixel ownership test, the scissor test, dithering, and the buffer writemasks affect the operation of glClear. The scissor box bounds the cleared region. Alpha function, blend function, logical operation, stenciling, texture mapping, and depth-buffering are ignored by glClear.
+     *
+     *  glClear takes a single argument that is the bitwise OR of several values indicating which buffer is to be cleared.
+     *
+     *  The values are as follows:
+     *
+     *  GL_COLOR_BUFFER_BIT
+     *
+     *    Indicates the buffers currently enabled for color writing. 
+     *  GL_DEPTH_BUFFER_BIT
+     *
+     *    Indicates the depth buffer. 
+     *  GL_ACCUM_BUFFER_BIT
+     *
+     *    Indicates the accumulation buffer. 
+     *  GL_STENCIL_BUFFER_BIT
+     *
+     *    Indicates the stencil buffer. 
+     *
+     * The value to which each buffer is cleared depends on the setting of the clear value for that buffer. 
+     */
     glClear ( mask : GLbitfield ) : void;
+    /**
+     * `glIndexMask` controls the writing of individual bits in the color index buffers. The least significant *n* bits of `mask`, where *n*
+     * is the number of bits in a color index buffer, specify a mask. Where a 1 (one) appears in the mask, it's possible to write to the corresponding bit in the color index buffer (or buffers). Where a 0 (zero) appears, the corresponding bit is write-protected.
+     *
+     * This mask is used only in color index mode, and it affects only the buffers currently selected for writing (see glDrawBuffer). Initially, all bits are enabled for writing. 
+     */
     glIndexMask ( mask : GLuint ) : void;
+    /**
+     *  `glColorMask` specifies whether the individual color components in the frame buffer can or cannot be written. If *red* is GL_FALSE, for example, no change is made to the red component of any pixel in any of the color buffers, regardless of the drawing operation attempted.
+     * 
+     * Changes to individual bits of components cannot be controlled. Rather, changes are either enabled or disabled for entire color components. 
+     */
     glColorMask ( red : GLboolean, green : GLboolean, blue : GLboolean, alpha : GLboolean ) : void;
+    /**
+     *  The alpha test discards fragments depending on the outcome of a comparison between an incoming fragment's alpha value and a constant reference value. `glAlphaFunc` specifies the reference value and the comparison function. The comparison is performed only if alpha testing is enabled. By default, it is not enabled. (See glEnable and glDisable of GL_ALPHA_TEST.)
+
+     * *func* and *ref* specify the conditions under which the pixel is drawn. The incoming **alpha** value is compared to *ref* using the function specified by *func*. If the value passes the comparison, the incoming fragment is drawn if it also passes subsequent stencil and depth buffer tests. If the value fails the comparison, no change is made to the frame buffer at that pixel location. The comparison functions are as follows:
+     * 
+     * GL_NEVER
+     * 
+     *    Never passes.
+     * 
+     * GL_LESS
+     * 
+     *    Passes if the incoming alpha value is less than the reference value. 
+     * 
+     * GL_EQUAL
+     * 
+     *    Passes if the incoming alpha value is equal to the reference value. 
+     * 
+     * GL_LEQUAL
+     * 
+     *    Passes if the incoming alpha value is less than or equal to the reference value. 
+     * 
+     * GL_GREATER
+     * 
+     *    Passes if the incoming alpha value is greater than the reference value. 
+     * 
+     * GL_NOTEQUAL
+     * 
+     *     Passes if the incoming alpha value is not equal to the reference value. 
+     * 
+     * GL_GEQUAL
+     * 
+     *     Passes if the incoming alpha value is greater than or equal to the reference value. 
+     * 
+     * GL_ALWAYS
+     * 
+     *     Always passes (initial value). 
+     * 
+     * glAlphaFunc operates on all pixel write operations, including those resulting from the scan conversion of points, lines, polygons, and bitmaps, and from pixel draw and copy operations. glAlphaFunc does not affect screen clear operations. 
+     */
     glAplhaFunc ( func : GLenum, ref: GLclampf) : void;
+    /**
+     * specify pixel arithmetic
+     * @link https://docs.gl/gl2/glBlendFunc
+     */
     glBlendFunc ( sFactor : GLenum, dFactor : GLenum ) : void;
+    /**
+     * Please use the web documentation for reference.
+     * @link https://docs.gl/gl2/glLogicOp
+     */
     glLogicOp ( opcode : GLenum ) : void;
+    /**
+     * `glCullFace` specifies whether front- or back-facing facets are culled (as specified by mode) when facet culling is enabled. Facet culling is initially disabled. To enable and disable facet culling, call the glEnable and glDisable commands with the argument GL_CULL_FACE. Facets include triangles, quadrilaterals, polygons, and rectangles.
+     * 
+     * glFrontFace specifies which of the clockwise and counterclockwise facets are front-facing and back-facing. See glFrontFace. 
+     */
     glCullFace ( mode : GLenum ) : void;
     glFrontFace ( mode : GLenum ) : void;
     glPointSize ( size : GLfloat ) : void;
