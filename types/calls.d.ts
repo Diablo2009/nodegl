@@ -491,8 +491,8 @@ export interface CallsEvaluators<GLenum, GLboolean, GLbitfield, GLvoid, GLbyte, 
     glMapGrid1d ( un : GLint, u1 : GLdouble, u2 : GLdouble ) : void;
     glMapGrid1f ( un : GLint, u1 : GLfloat, u2 : GLfloat ) : void;
 
-    glMapGrid2d ( un : GLint, u1: GLdouble, u2 : GLdouble, vn : GLint, v1 : GLdouble, u2 : GLdouble ) : void;
-    glMapGrid2f ( un : GLint, u1: GLfloat, u2 : GLfloat, vn : GLint, v1 : GLfloat, u2 : GLfloat ) : void;
+    glMapGrid2d ( un : GLint, u1: GLdouble, u2 : GLdouble, vn : GLint, v1 : GLdouble, v2 : GLdouble ) : void;
+    glMapGrid2f ( un : GLint, u1: GLfloat, u2 : GLfloat, vn : GLint, v1 : GLfloat, v2 : GLfloat ) : void;
 
     glEvalPoint1 ( i : GLint ) : void;
     glEvalPoint2 ( i : GLint, j : GLint ) : void;
