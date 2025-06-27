@@ -1,0 +1,15 @@
+export type GLenum = number;
+export type GLboolean = boolean;
+export type GLbitfield = number;
+export type GLvoid = void;
+export type GLbyte = number; // 1-byte signed
+export type GLshort = number; // 2-byte signed
+export type GLint = number; // 4-byte signed
+export type GLubyte = number; // 1-byte unsigned
+export type GLushort = number; // 2-byte unsigned
+export type GLuint = number; // 4-byte unsigned
+export type GLsizei = number; // 4-byte signed
+export type GLfloat = number; // single precision float
+export type GLclampf = number; // single precision float in [0,1]
+export type GLdouble = number; // double precision float
+export type GLclampd = number; // double precision float in [0,1]
